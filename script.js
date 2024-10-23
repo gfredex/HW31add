@@ -16,14 +16,19 @@ dragArea.addEventListener('drop', function (e) {
     if (e.dataTransfer.files[0].size <= 8388608 && e.dataTransfer.files[0].type.includes('image')) {
         dragArea.querySelector('label').textContent = '';
         dragArea.querySelector('span').textContent = e.dataTransfer.files[0].name;
-        console.log(e.dataTransfer.files[0]);
     } else {
         alert('Не тот файл или его размер больще 1МБ');
     }
-
-
-
 });
+
+file.addEventListener('change', e => {
+    if (file.files[0].size <= 8388608 && file.files[0].type.includes('image')) {
+        dragArea.querySelector('label').textContent = '';
+        dragArea.querySelector('span').textContent = file.files[0].name;
+    } else {
+        alert('Не тот файл или его размер больще 1МБ');
+    }
+})
 dragArea.addEventListener('dragover', (e) => {
     e.preventDefault();
     dragArea.classList.add('dragover');
